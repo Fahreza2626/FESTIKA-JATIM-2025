@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indonesia Tourism | Official Travel Guide</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #e74c3c;
+      --accent: #f39c12;
+      --dark: #1a1a1a;
+      --gray: #f5f5f5;
+      --light: #ffffff;
+      --shadow: 0 4px 25px rgba(0,0,0,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--gray);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--light);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      color: var(--dark);
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 80vh;
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url('images/Background Labuan Bajo.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 14px 34px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: #c0392b;
+      transform: translateY(-3px);
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      color: var(--dark);
+      margin: 4rem 0 2rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 80px;
+      height: 3px;
+      background: var(--primary);
+      display: block;
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+
+    /* ===== FORM ===== */
+    #tripForm {
+      background: var(--light);
+      max-width: 600px;
+      margin: 0 auto 5rem;
+      padding: 2rem 2.5rem;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+    }
+
+    #tripForm label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    #tripForm input, #tripForm select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      transition: border 0.2s;
+    }
+
+    #tripForm input:focus, #tripForm select:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    #tripForm button {
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    /* ===== DESTINATION GRID ===== */
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .destination-card {
+      background: var(--light);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .destination-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-content p {
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .rating {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: var(--gray);
+      color: var(--dark);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: #e0e0e0;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 0 1rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+      color: #ccc;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: white;
+    }
+
+    .copyright {
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+      .hero {
+        height: 60vh;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#hero" class="logo">Indonesia Tourism</a>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#plan">Plan Trip</a></li>
+          <li><a href="#footer">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <h1>Explore Indonesia</h1>
+    <p>Discover the wonders of Indonesia — from ancient temples to tropical islands and vibrant cultures.</p>
+    <a href="#destinations" class="btn-primary">Start Your Journey</a>
+  </section>
+
+  <!-- TRIP FORM -->
+  <section class="container" id="plan">
+    <h2 class="section-title">Plan Your Trip</h2>
+    <form id="tripForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your full name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="your@email.com" required>
+
+      <label for="destination">Preferred Destination</label>
+      <select id="destination" required>
+        <option value="">-- Choose Destination --</option>
+        <option value="raja-ampat">Raja Ampat</option>
+        <option value="borobudur">Borobudur</option>
+        <option value="bali">Bali</option>
+        <option value="bromo">Mount Bromo</option>
+        <option value="komodo">Komodo Island</option>
+        <option value="ubud">Ubud</option>
+        <option value="toba">Lake Toba</option>
+      </select>
+
+      <label for="date">Travel Date</label>
+      <input type="date" id="date" required>
+
+      <button type="submit" class="btn-primary">Send Request</button>
+      <p id="formMessage" style="display:none; text-align:center; margin-top:1rem;">Request Sent Successfully!</p>
+    </form>
+  </section>
+
+  <!-- DESTINATIONS -->
+  <section class="container" id="destinations">
+    <h2 class="section-title">Iconic Indonesian Destinations</h2>
+
+    <div class="destinations-grid">
+      <div class="destination-card">
+        <img src="images/Raja-Ampat.jpg" alt="Raja Ampat" class="card-image">
+        <div class="card-content">
+          <h3>Raja Ampat Islands</h3>
+          <p>Dive into crystal-clear waters filled with dazzling coral reefs and marine life beyond imagination.</p>
+          <div class="rating">★★★★★ 4.9/5</div>
+          <a href="#" class="btn-secondary">View Details</a>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <img src="images/Borobudur.jpg" alt="Borobudur" class="card-image">
+        <div class="card-content">
+          <h3>Borobudur Temple</h3>
+          <p>Witness the mystical sunrise over the world’s largest Buddhist temple, surrounded by fog and ancient stone carvings.</p>
+          <div class="rating">★★★★★ 4.9/5</div>
+          <a href="#" class="btn-secondary">View Details</a>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <img src="images/PantaiBali.jpg" alt="Bali Beach" class="card-image">
+        <div class="card-content">
+          <h3>Bali Beach</h3>
+          <p>Golden sands, palm trees, and stunning sunsets — the Island of the Gods awaits.</p>
+          <div class="rating">★★★★☆ 4.7/5</div>
+          <a href="#" class="btn-secondary">View Details</a>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <img src="images/Ubud.jpg" alt="Ubud – Bali" class="card-image">
+        <div class="card-content">
+          <h3>Ubud – Bali</h3>
+          <p>Immerse yourself in the tranquil beauty of rice terraces and sacred Balinese temples.</p>
+          <div class="rating">★★★★★ 4.8/5</div>
+          <a href="#" class="btn-secondary">View Details</a>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <img src="images/Bromo.jpg" alt="Mount Bromo" class="card-image">
+        <div class="card-content">
+          <h3>Mount Bromo</h3>
+          <p>Experience the magic of sunrise over one of Indonesia’s most iconic volcanoes.</p>
+          <div class="rating">★★★★★ 4.8/5</div>
+          <a href="#" class="btn-secondary">View Details</a>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <img src="images/Danau Toba.jpg" alt="Lake Toba – North Sumatra" class="card-image">
+        <div class="card-content">
+          <h3>Lake Toba – North Sumatra</h3>
+          <p>Explore the serenity of the world’s largest volcanic lake surrounded by Batak heritage.</p>
+          <div class="rating">★★★★☆ 4.6/5</div>
+          <a href="#" class="btn-secondary">View Details</a>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <img src="images/Komodo.jpg" alt="Komodo Island – East Nusa Tenggara" class="card-image">
+        <div class="card-content">
+          <h3>Komodo Island – East Nusa Tenggara</h3>
+          <p>Encounter the legendary Komodo dragons and explore pink-sand beaches under golden sunlight.</p>
+          <div class="rating">★★★★★ 4.9/5</div>
+          <a href="#" class="btn-secondary">View Details</a>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <img src="images/Prambanan.jpg" alt="Prambanan Temple – Yogyakarta" class="card-image">
+        <div class="card-content">
+          <h3>Prambanan Temple – Yogyakarta</h3>
+          <p>Marvel at the towering Hindu temples carved with ancient tales of gods and devotion.</p>
+          <div class="rating">★★★★☆ 4.7/5</div>
+          <a href="#" class="btn-secondary">View Details</a>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <img src="images/Kayutangan.jpeg" alt="Kayutangan Heritage Street" class="card-image">
+        <div class="card-content">
+          <h3>Kayutangan Heritage Street</h3>
+          <p>Explore a charming heritage street filled with vintage buildings, retro-style cafés, murals, and nighttime lights that highlight Malang’s historical charm.</p>
+          <div class="rating">★★★★★ 4.8/5</div>
+          <a href="#" class="btn-secondary">View Details</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#plan">Plan Trip</a></li>
+            <li><a href="#footer">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Popular Regions</h4>
+          <ul>
+            <li><a href="#">Bali & Nusa Penida</a></li>
+            <li><a href="#">Java & Borobudur</a></li>
+            <li><a href="#">Sumatra & Raja Ampat</a></li>
+            <li><a href="#">Eastern Indonesia</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">TripAdvisor</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="copyright">
+        © 2025 Indonesia Tourism • All Rights Reserved
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Smooth scroll untuk semua tautan internal
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const target = document.querySelector(targetId);
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Form submission
+    const form = document.getElementById('tripForm');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = {
+          name: document.getElementById('name').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          destination: document.getElementById('destination').value,
+          date: document.getElementById('date').value
+        };
+
+        if (!formData.name || !formData.email || !formData.destination || !formData.date) {
+          alert('Please fill in all fields.');
+          return;
+        }
+
+        const msg = document.getElementById('formMessage');
+        msg.style.display = 'block';
+
+        try {
+          const res = await fetch('/api/plan-trip', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
+
+          const result = await res.json();
+          if (res.ok) {
+            msg.textContent = result.message || 'Request sent successfully!';
+            msg.style.color = '#27ae60';
+            form.reset();
+          } else {
+            throw new Error(result.error || 'Failed to send');
+          }
+        } catch (err) {
+          msg.textContent = '❌ ' + (err.message || 'Something went wrong');
+          msg.style.color = '#e74c3c';
+        }
+      });
+    }
+
+    // View Details
+    document.querySelectorAll('.btn-secondary').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const title = this.closest('.destination-card').querySelector('h3').textContent;
+        alert(`📍 ${title}\n\nMore details would appear here in a real app.`);
+      });
+    });
+  </script>
+</body>
+</html> 
